@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Superstore Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #fff0f6;
+    margin: 0;
+    padding: 20px;
+}
+h1 {
+    text-align: center;
+    color: #be185d;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.2);
+}
+.kpi {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.kpi div {
+    text-align: center;
+}
+.kpi h2 {
+    color: #db2777;
+}
+</style>
+</head>
+<body>
+
+<h1>Superstore Performance Dashboard</h1>
+
+<div class="kpi">
+    <div><h2>2,297,201</h2><p>Total Sales</p></div>
+    <div><h2>286,397</h2><p>Total Profit</p></div>
+    <div><h2>15.2%</h2><p>Avg Discount</p></div>
+    <div><h2>38,000</h2><p>Units Sold</p></div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <canvas id="salesChart"></canvas>
+    </div>
+    <div class="card">
+        <canvas id="categoryChart"></canvas>
+    </div>
+</div>
+
+<script>
+const ctx1 = document.getElementById('salesChart');
+new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: ['Jan','Mar','May','Jul','Sep','Nov'],
+        datasets: [{
+            label: 'Sales',
+            data: [112,134,158,204,189,221],
+            borderColor: '#ec4899',
+            fill: false
+        }]
+    }
+});
+
+const ctx2 = document.getElementById('categoryChart');
+new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['Technology','Furniture','Office Supplies'],
+        datasets: [{
+            data: [186,52,47],
+            backgroundColor: ['#ec4899','#f472b6','#fbcfe8']
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
